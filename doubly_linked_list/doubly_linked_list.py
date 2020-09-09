@@ -91,6 +91,9 @@ class DoublyLinkedList:
 
         # Always set the tail to the node we added
         self.tail = newNode
+
+        # Increment length
+        self.length += 1
             
     """
     Removes the List's current tail node, making the 
@@ -114,7 +117,8 @@ class DoublyLinkedList:
                 self.head = None
                 self.tail = None
 
-            # Return the removed value
+            # Return the removed value and decrement length
+            self.length -= 1
             return removedTail.value
                 
         # Empty list, nothing to remove
