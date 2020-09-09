@@ -15,7 +15,7 @@ class LinkedListTests(unittest.TestCase):
         self.assertEqual(self.list.head.value, 1)
         #print(self.list) # 1 -> 2
 
-
+    
     def test_remove_head(self):
         self.list.add_to_tail(10)
         self.list.add_to_tail(20)
@@ -37,6 +37,7 @@ class LinkedListTests(unittest.TestCase):
         self.list.add_to_tail(40)
         #print(self.list) # 30 -> 40
         self.assertEqual(self.list.remove_tail(), 40)
+        #print(self.list) # 30
         self.assertEqual(self.list.remove_tail(), 30)
         #print(self.list) # Empty
 

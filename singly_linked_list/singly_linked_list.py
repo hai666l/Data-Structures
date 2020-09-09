@@ -1,6 +1,5 @@
 class ListNode:
-    def __init__(self, value, prev=None, next=None):
-        self.prev = prev
+    def __init__(self, value, next=None):
         self.value = value
         self.next = next
 
@@ -30,11 +29,9 @@ class LinkedList:
             # If we are adding the second item in the list, we need to add based on self.head instead of the tail so that we can link everything correctly
             if self.head.next == None:
                 # Add node to head
-                newNode.prev = self.head
                 self.head.next = newNode
             else:
                 # Add node to tail
-                newNode.prev = self.tail
                 self.tail.next = newNode
         else:
             # Nothing in list, set the head and tail to the node but do not link them together, as they are technically a single node
@@ -51,7 +48,6 @@ class LinkedList:
             if self.head.next:
                 # More than one node in list, set head to self.head.next and remove new heads prev
                 self.head = self.head.next
-                self.head.prev = None
             else:
                 # Head is only node in list, set head and tail to None
                 self.head = None
@@ -69,16 +65,21 @@ class LinkedList:
             # Save old tail for return
             removedTail = self.tail
 
-            if self.tail.prev:
-                # More than one node in list
-                # .prev is the new tail
-                self.tail = self.tail.prev 
-                self.tail.next = None
-
-            else:
+            if self.head.next == None:
                 # Only one node in list, remove head and tail as they are the same node
                 self.head = None
                 self.tail = None
+            else:
+                # Multiple Nodes in list, need to find the new tail, then remove the current tail
+                node = self.head
+
+                # Find second-to-last node
+                while hasattr(node.next, 'next') and node.next.next != None:
+                    node = node.next
+                
+                # Remove current tail and set second-to-last node to the new tail
+                node.next = None
+                self.tail = node
 
             # Return the removed value
             return removedTail.value
