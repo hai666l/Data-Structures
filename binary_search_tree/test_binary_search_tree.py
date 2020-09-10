@@ -27,7 +27,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst.insert(7)
         self.assertTrue(self.bst.contains(7))
         self.assertFalse(self.bst.contains(8))
-    """
+
     def test_get_max(self):
         self.assertEqual(self.bst.get_max(), 5)
         self.bst.insert(30)
@@ -35,7 +35,7 @@ class BinarySearchTreeTests(unittest.TestCase):
         self.bst.insert(300)
         self.bst.insert(3)
         self.assertEqual(self.bst.get_max(), 300)
-
+    """
     def test_for_each(self):
         arr = []
         cb = lambda x: arr.append(x)
